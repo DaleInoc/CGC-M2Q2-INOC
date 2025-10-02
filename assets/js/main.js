@@ -7,10 +7,10 @@ scene.background = new THREE.Color( 0xccccff );
 
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1000 );
 
-const ambientLight = new THREE.AmbientLight(0xffffff);//0xaaaaaa
+const ambientLight = new THREE.AmbientLight(0xffffff);//change to 0x111111 later
 scene.add(ambientLight);
 
-// const candle = new THREE.PointLight( 0xff9329, 50, 1000);
+// const candle = new THREE.PointLight( 0xff9329, 10, 1000);
 // candle.position.set( 0, .75, 2 );
 // scene.add( candle );
 
@@ -48,6 +48,16 @@ leftWall.position.y = 0.95;
 leftWall.position.z = -3.6;
 scene.add( leftWall );
 
+const windowWallGeometry = new THREE.BoxGeometry( 7, 4, 0.5 );
+const windowWallMaterial = new THREE.MeshStandardMaterial({map: wallDiff, normalMap: wallNormal, roughnessMap: wallRough });
+const windowWall = new THREE.Mesh( windowWallGeometry, windowWallMaterial );
+windowWall.castShadow = true;
+windowWall.receiveShadow = true;
+windowWall.rotation.y = -Math.PI / 4;
+windowWall.position.x = 4.5;
+windowWall.position.y = 0.95;
+windowWall.position.z = -4.5;
+scene.add( windowWall );
 
 const floorGeometry = new THREE.BoxGeometry( 7, 10, 0.5 );
 const floorMaterial = new THREE.MeshStandardMaterial({map: woodDiff, normalMap:woodNormal, aoMap:woodAO, displacementMap: woodDisp, roughnessMap: woodRough});
@@ -60,17 +70,6 @@ floor.position.x = 1;
 floor.position.y = -1.25;
 floor.position.z = -1;
 scene.add( floor );
-
-const windowWallGeometry = new THREE.BoxGeometry( 7, 4, 0.5 );
-const windowWallMaterial = new THREE.MeshStandardMaterial({map: wallDiff, normalMap: wallNormal, roughnessMap: wallRough });
-const windowWall = new THREE.Mesh( windowWallGeometry, windowWallMaterial );
-windowWall.castShadow = true;
-windowWall.receiveShadow = true;
-windowWall.rotation.y = -Math.PI / 4;
-windowWall.position.x = 4.5;
-windowWall.position.y = 1;
-windowWall.position.z = -4.5;
-scene.add( windowWall );
 
 const counterGeometry = new THREE.BoxGeometry( 6, 1.5, 0.25 );
 const counterMaterial = new THREE.MeshStandardMaterial({map: counterDiff, normalMap:counterNormal, roughnessMap: counterRough});
