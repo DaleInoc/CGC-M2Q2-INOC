@@ -7,7 +7,7 @@ scene.background = new THREE.Color( 0xccccff );
 
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1000 );
 
-const ambientLight = new THREE.AmbientLight(0x111111);//change to 0x111111 later
+const ambientLight = new THREE.AmbientLight(0x111111);
 scene.add(ambientLight);
 
 const candle = new THREE.PointLight( 0xff9329, 5, 1000);
@@ -24,7 +24,6 @@ targetObject.position.set(-2.5, 0, -0.25 )
 scene.add(targetObject);
 
 overheadLight.target = targetObject;
-
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
